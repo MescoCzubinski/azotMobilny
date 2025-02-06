@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Azot Mobilny</title>
+    <link rel="stylesheet" href="output.css" />
+
+    <!-- fonty -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="m-0 p-0 bg-top-agrar-green/10 flex justify-center font-body">
+    <div class="m-3 bg-white rounded-3xl container flex flex-col justify-start">
+      <div class="header m-3 flex justify-between">
+        <div class="text-2xl font-header font-bold flex justify-center items-center flex-1"><p>Szacowanie azotu mobilnego</p></div>
+        <div class="h-full flex items-center justify-center">
+          <button id="reset" class="w-24 h-12 flex items-center justify-center border-top-agrar-green border-2 rounded-3xl text-2xl text-top-agrar-green hover:bg-top-agrar-green/25">Resetuj</button>
+        </div>
+      </div>
+      <div class="content mt-5 flex justify-around flex-wrap">
+        <!-- <div class="section w-80 p-3 flex flex-col justify-start">
+          <div class="mb-5 section-name text-lg font-bold text-center">NAZWA SEKCJI</div>
+          <div class="section-content">
+            <div class="input mb-5 flex">
+              <input type="text" class="w-24 h-12 pl-2 text-xl border-2 border-bg-info rounded-3xl flex-1 hover:bg-bg-info/25" id="" placeholder="podaj wartość x" />
+              <div class="ml-2 text-xl flex items-center">jednostka</div>
+            </div>
+            <div class="info mb-5">
+              <div class="text-2xl text-center">Tu wpisz tekst do wyświetlenia, np. wynik:</div>
+              <div class="text-3xl mt-4 text-top-agrar-green text-center">wynik j<sup>2</sup></div>
+            </div>
+          </div>
+        </div> -->
+        <div class="section w-80 p-3 flex flex-col justify-start">
+          <div class="mb-5 section-name text-xl font-bold text-center">DANE</div>
+          <div class="section-content">
+            <div class="input mb-2 flex">
+              <div class="text-xl">Rodzaj gleby:</div>
+            </div>
+            <div class="input mb-5 flex">
+              <select class="w-24 h-12 text-xl border-2 border-bg-info rounded-2xl flex-1 hover:bg-bg-info/25 pl-1 rounded-tl-lg rounded-br-3xl" id="soil-selector">
+                <option value="0" selected disabled>wybierz glebę</option>
+                <option value="10">piaszczysta</option>
+                <option value="15">piaszczysto pylasta</option>
+                <option value="20">piaszczysto gliniasta</option>
+                <option value="30">gliniasto piaszczysta</option>
+                <option value="40">gleba gliniasta</option>
+                <option value="20">ilasta słabo spulchniona</option>
+                <option value="35">ilasta średnio spulchniona</option>
+                <option value="50">ilasta bardzo mocno spulchniona</option>
+                <option value="40">czarnoziem niespulchniony</option>
+                <option value="60">czarnoziem spulchniony</option>
+                <option value="50">czarna ziemia niespulchniona</option>
+                <option value="60">czarna ziemia spulchniona</option>
+                <option value="70">próchniczna ponad 3% próchnicy</option>
+                <option value="80">próchniczna ponad 4% próchnicy</option>
+              </select>
+            </div>
+            <div class="input mb-2 flex">
+              <div class="text-xl">Resztki pożniwne:</div>
+            </div>
+            <div class="input mb-5 flex">
+              <select class="w-24 h-12 text-xl border-2 border-bg-info rounded-2xl flex-1 hover:bg-bg-info/25 pl-1 rounded-tl-lg rounded-br-3xl" id="straw-selector">
+                <option value="0" selected disabled>wybierz rodzaj resztek</option>
+                <option value="8">słoma zbóż słaby plon</option>
+                <option value="12">słoma zbóż średni plon</option>
+                <option value="18">słoma zbóż wysoki plon</option>
+                <option value="15">słoma rzepaku średni plon</option>
+                <option value="20">słoma rzepaku wysoki plon</option>
+                <option value="25">liście buraka</option>
+                <option value="30">słoma strączkowych średnich</option>
+                <option value="40">słoma strączkowych mocnych</option>
+                <option value="0">brak</option>
+              </select>
+            </div>
+            <div class="input mb-2 flex">
+              <div class="text-xl">Nawozy naturlane</div>
+            </div>
+            <div class="input mb-5 flex">
+              <select class="w-24 h-12 text-xl border-2 border-bg-info rounded-2xl flex-1 hover:bg-bg-info/25 pl-1 rounded-tl-lg rounded-br-3xl" id="fertilizer-selector">
+                <option value="0" selected disabled>wybierz nawóz</option>
+                <option value="0.15">obornik jesienią</option>
+                <option value="0.12">obornik rok temu</option>
+                <option value="0.08">obornik 2 lata temu</option>
+                <option value="0.12">gnojowica jesienią</option>
+                <option value="0">brak</option>
+              </select>
+            </div>
+            <div class="input mb-2 flex">
+              <div class="text-xl">Międzyplony:</div>
+            </div>
+            <div class="input mb-5 flex">
+              <select class="w-24 h-12 text-xl border-2 border-bg-info rounded-2xl flex-1 hover:bg-bg-info/25 pl-1 rounded-tl-lg rounded-br-3xl" id="catch-crop-selector">
+                <option value="0" selected disabled>wybierz międzyplon</option>
+                <option value="0.10">bez bobowatych słabe</option>
+                <option value="0.15">bez bobowatych mocne</option>
+                <option value="0.20">z bobowatymi słabe</option>
+                <option value="0.25">z bobowatymi średnie</option>
+                <option value="0.30">z bobowatymi mocne</option>
+                <option value="0">brak</option>
+              </select>
+            </div>
+            <div class="input mb-2 flex">
+              <div class="text-xl">Czynniki redukcji:</div>
+            </div>
+            <div class="input mb-5 flex">
+              <select class="w-24 h-12 text-xl border-2 border-bg-info rounded-2xl flex-1 hover:bg-bg-info/25 pl-1 rounded-tl-lg rounded-br-3xl" id="factor-selector">
+                <option value="0" selected disabled>wybierz czynnik redukcji</option>
+                <option value="0.20">skorupa glebowa</option>
+                <option value="0.15">zdegradowana struktura</option>
+                <option value="0.10">okresowe zalanie wodą</option>
+                <option value="0.25">długotrwałe zalanie wodą</option>
+                <option value="0.15">nagłe ochłodzenie wiosną</option>
+                <option value="0.15">wiosenne wapnowanie</option>
+                <option value="0.20">odczyn na granicy optymalnego</option>
+                <option value="0.50">późne wapnow. kwaśnej gleby próchn.</option>
+                <option value="0.40">długo nasyc. wodą z przepusz. podgleb.</option>
+                <option value="0">warunki optymalne</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="section w-80 p-3 flex flex-col justify-start">
+          <div class="mb-5 section-name text-xl font-bold text-center">WYNIKI</div>
+          <div class="section-content">
+            <div class="info mb-5 flex justify-center">
+              <div class="text-2xl text-center p-1">Nawozy naturalne:</div>
+              <div class="text-2xl text-center p-1 text-top-agrar-green" id="fertilizer-display"></div>
+            </div>
+            <div class="info mb-5 flex justify-center">
+              <div class="text-2xl text-center p-1">Międzyplony:</div>
+              <div class="text-2xl text-center p-1 text-top-agrar-green" id="catch-cop-display"></div>
+            </div>
+            <div class="info mb-5 flex justify-center">
+              <div class="text-2xl text-center p-1 font-bold">Azot mobilny do redukcji:</div>
+              <div class="text-3xl p-1 mt-4 text-top-agrar-green text-center font-bold" id="reduction-display"></div>
+            </div>
+            <div class="info mb-5 flex justify-center">
+              <div class="text-2xl text-center p-1">Czynniki redukcji:</div>
+              <div class="text-2xl text-center p-1 text-top-agrar-green" id="factor-display"></div>
+            </div>
+            <div class="info mb-5 flex justify-center">
+              <div class="text-2xl text-center p-1 font-bold">Szacowanie azotu mobilnego:</div>
+              <div class="text-3xl p-1 mt-4 text-top-agrar-green text-center font-bold" id="main-display"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="script.js"></script>
+</html>
