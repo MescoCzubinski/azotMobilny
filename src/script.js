@@ -46,7 +46,7 @@ selectElements.forEach((select) => {
     let result = factorResult + factorResult * weather;
     console.log("weather: " + weather);
 
-    if (visitedCounter > 4) {
+    if (visitedCounter > 5) {
       elementResult.innerHTML = result.toFixed(1) + " kg/ha";
     }
   });
