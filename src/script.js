@@ -46,7 +46,7 @@ selectElements.forEach((select) => {
     let result = factorResult + factorResult * weather;
     console.log("weather: " + weather);
 
-    if (visitedCounter >= 6) {
+    if (visitedCounter > 4) {
       elementResult.innerHTML = result.toFixed(1) + " kg/ha";
     }
   });
@@ -57,6 +57,6 @@ resetButton.addEventListener("click", function () {
     element.value = 0;
     element.classList.remove("visited");
   });
-  elementResult.innerHTML = "uzupełnij";
+  elementResult.innerHTML = "wybierz czynniki";
   visitedCounter = 1;
 });
