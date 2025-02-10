@@ -3,13 +3,14 @@ const strawSelector = document.querySelector("#straw-selector");
 const fertilizerSelector = document.querySelector("#fertilizer-selector");
 const catchCropSelector = document.querySelector("#catch-crop-selector");
 const factorSelector = document.querySelector("#factor-selector");
-const elements = [soilSelector, strawSelector, fertilizerSelector, catchCropSelector, factorSelector];
+const weatherSelector = document.querySelector("#weather-selector");
+const elements = [soilSelector, strawSelector, fertilizerSelector, catchCropSelector, factorSelector, weatherSelector];
 
 const selectElements = document.querySelectorAll("select");
 const resetButton = document.querySelector("#reset");
 
 const mainDisplay = document.querySelector("#main-display");
-const result = document.querySelector("#result");
+const elementResult = document.querySelector("#result");
 
 const visitedElements = document.querySelectorAll("input, select");
 let visitedCounter = 1;
@@ -38,14 +39,15 @@ selectElements.forEach((select) => {
     fertilizer = Number(fertilizerSelector.value) || 0;
     catchCrop = Number(catchCropSelector.value) || 0;
     factor = Number(factorSelector.value) || 0;
+    weather = Number(weatherSelector.value) || 0;
 
-    let fertilizerCalc = soil * fertilizer;
-    let catchCropCalc = soil * catchCrop;
-    let reductionCalc = fertilizerCalc + catchCropCalc + straw + soil;
+    let NitrogenToReduction = soil + straw + soil * fertilizer + soil * catchCrop;
+    let factorResult = NitrogenToReduction - NitrogenToReduction * factor;
+    let result = factorResult + factorResult * weather;
+    console.log("weather: " + weather);
 
-    console.log(visitedCounter);
     if (visitedCounter >= 5) {
-      result.innerHTML = (reductionCalc - reductionCalc * factor).toFixed(2) + "kg/ha";
+      elementResult.innerHTML = result.toFixed(2) + "kg/ha";
     }
   });
 });
@@ -55,6 +57,6 @@ resetButton.addEventListener("click", function () {
     element.value = 0;
     element.classList.remove("visited");
   });
-  result.innerHTML = "uzupełnij";
+  elementResult.innerHTML = "uzupełnij";
   visitedCounter = 1;
 });
