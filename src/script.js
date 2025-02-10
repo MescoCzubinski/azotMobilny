@@ -47,7 +47,7 @@ selectElements.forEach((select) => {
     console.log("weather: " + weather);
 
     if (visitedCounter >= 5) {
-      elementResult.innerHTML = result.toFixed(2) + "kg/ha";
+      elementResult.innerHTML = result.toFixed(1) + " kg/ha";
     }
   });
 });
